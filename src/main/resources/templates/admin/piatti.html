@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{header.piatti})">
+</head>
+<body align="center">
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+		<h4 th:text="#{header.piatti}">Lista dei piatti</h4>
+		<ul>
+			<li th:each="piatto : ${piatti}"><a href="admin/piatto.html"
+				th:href="@{'/admin/piatto' + '/' + ${piatto.id}}"
+				th:text="${piatto.nome}">Piatto buono</a></li>
+		</ul>
+	</div>
+	<div>
+		<a th:href="@{'/admin/chef/buffet/piatto' + '/' + ${buffet.id} }">Aggiungi
+			piatto</a>
+	</div>
+
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

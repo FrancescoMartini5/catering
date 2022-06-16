@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.piatti})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div align="center">
+    	<h4 th:text="#{header.piatti}">Lista dei piatti</h4>
+		<ul>
+			<li th:each="piatto : ${piatti}">
+				<a href="piatto.html" 
+				   th:href="@{'/piatto' + '/' + ${piatto.id}}" 
+				   th:text="${piatto.nome}">Buffer buono</a>
+			</li>
+		</ul>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

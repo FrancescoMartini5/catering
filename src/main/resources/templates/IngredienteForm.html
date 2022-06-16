@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{title.formIngrediente})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div align="center">
+		<h4>Inserisci i dati di un ingrediente</h4>
+	</div>
+	<form th:action="@{/admin/chef/buffet/piatto/ingredienti/}+${p.id}" method="POST" th:object="${ingrediente}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div align="center">
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div>
+				<span>Descrizione:</span>
+				<span><input type="text" th:field="*{descrizione}" /></span>
+				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>
+			<div>
+				<span>Origine:</span>
+				<span><input type="text" th:field="*{origine}" /></span>
+				<span th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></span>
+			</div>
+			<div>
+				<span><button type="submit">Inserisci un altro ingrediente</button>
+				<a th:href="@{/admin/chef/buffet/piatto/}+${b.id}">Inserisci un altro piatto al buffet</a>
+				</span>
+			</div>
+		</div>
+	</form>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

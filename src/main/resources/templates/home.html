@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div align="center">
+    	<h4 th:text="#{header.menuUtente}">Menu</h4>
+		<div>
+			<a href="buffet" th:href="@{/buffets}">Elenco di tutti i buffet disponibili</a>
+   		</div>
+   		<div>
+			<a th:href="@{/chefs}">Elenco dei nostri chef</a>
+   		</div>   		
+    </div>
+    <div align="center">
+   		<div>
+			<a th:href="@{/logout}">Logout</a>
+   		</div>
+   		
+    </div>
+    <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+</body>
+</html>

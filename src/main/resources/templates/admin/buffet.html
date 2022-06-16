@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.buffet})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div align="center">
+    	<h4 th:text="#{header.buffet}">...</h4>
+    	<div th:if="${buffet}" th:object="${buffet}">
+			<h5 th:text="*{nome}">nome</h5>
+			<span th:text="*{descrizione}">descrizione </span>
+   		</div>
+   		<div><a th:href="@{/admin/buffet/piatto/}+${buffet.id}">
+   		Visualizza i piatti</a></div>
+   		<div><a th:href="@{'/admin/delete/buffet' + '/' + ${buffet.id} }" 
+				   >Elimina buffet</a>
+   		</div>
+   		
+   		    	<div th:unless="${buffet}">Questo buffet non esiste</div>
+    </div>
+  
+    <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>
